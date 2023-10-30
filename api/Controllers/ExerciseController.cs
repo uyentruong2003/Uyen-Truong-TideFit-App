@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
+using api.Models;
 
 namespace api.Controllers
 {
@@ -14,19 +15,25 @@ namespace api.Controllers
     {
         // GET: api/Exercise
         [HttpGet]
-        public List<string> Get()
+        public List<Exercise> Get()
         {   
-            List<string> myString = new List<string>();
-            myString.Add("Hello World!");
-            myString.Add("Dummy Data");
-            return myString;
+            ExerciseUtility utility = new ExerciseUtility();
+            List<Exercise> exerciseList= utility.GetAllExercises();
+            return exerciseList;
         }
 
         // GET: api/Exercise/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Exercise Get(string id)
         {
-            return "value";
+            ExerciseUtility utility = new ExerciseUtility();
+            List<Exercise> exerciseList = utility.GetAllExercises();
+            foreach (Exercise exercise in exerciseList) {
+                if (exercise.id == id) {
+                    return exercise;
+                }
+            }
+            return new Exercise();
         }
 
         // POST: api/Exercise

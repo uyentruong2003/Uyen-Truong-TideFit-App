@@ -46,7 +46,7 @@ function addNewExercise(exerciseList) {
             activityName: document.getElementById("activityNameInput").value,
             activityType: selectedType,
             distance: document.getElementById("distanceInput").value,
-            // dateCompleted: document.getElementById("dateCompletedDropdown").value,
+            // dateCompleted: document.getElementById("dateCompleted").value,
             pinned: false,
             deleted: false
         };

@@ -1,21 +1,13 @@
 
-// Function: Save exercises to local storage:
-const saveExercises = (exerciseList) => {
-    localStorage.setItem('exercises',JSON.stringify(exerciseList))
-}
-
-// Function: Get saved exercises from local storage:
-const getSavedExercises = () => {
-        //get JSON notes from local storage
-        const exercisesJSON = localStorage.getItem('exercises')
-        // try-catch used just in case the file in local storage is not JSON
-        try {
-        // Check if not null, convert JSON back to array & return. 
-        // Else, return empty array
-        return exercisesJSON !== null ? JSON.parse(exercisesJSON) : []
-        } catch(e){
-            return []
-    }
+// Function: POST exercises to API
+async function saveExercise(exercise) {
+    await fetch("http://localhost:5165/api/Exercise", {
+        method: "POST",
+        body: JSON.stringify(exercise),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
 }
 
 //Function: fetch all exercises from the API created:
@@ -32,8 +24,6 @@ async function fetchExerciseAPI() {
         console.log(error);
     }
 }
-
-
 
 // Function: Remove an exercise:
 const removeExercise = (id, exerciseList) => {
@@ -67,7 +57,7 @@ function sortExercises(exerciseList){
 
 
 // Function: Add new exercise:
-function addNewExercise(exerciseList) {
+function addNewExercise() {
     // Select Activity Type:
     let selectedType = "none"; 
     // Update the activity selector:
@@ -85,15 +75,14 @@ function addNewExercise(exerciseList) {
             distance: document.getElementById("distanceInput").value,
             dateCompleted: document.getElementById("dateCompleted").value,
             pinned: false,
+            deleted: false
         };
-        // Add the new exercise to the array & save to local storage:
-        exerciseList.push(exercise);
-        saveExercises(exerciseList);
+        // POST the new exercise to the API:
+        saveExercise(exercise);
         // Reset form after submitting:
         document.getElementById("add-new-form").reset();
         // Render exercise:
-        exerciseList= getSavedExercises();
-        renderExercises(exerciseList);
+        renderExercises();
     });
     
 }
@@ -127,17 +116,7 @@ function generateExerciseDOM(exercise, exerciseList) {
     handleDeleteButton(exercise.id, exerciseList);
 }
 
-// function renderExercises(exerciseList) {
-//     sortExercises(exerciseList);
-//     // clear DOM of the table:
-//     document.querySelector('#table-body').innerHTML="";
-//     // loop thru the list and add the rows into the table:
-//     exerciseList.forEach((exercise) => {
-//         generateExerciseDOM(exercise, exerciseList);
-//     });
-// }
-
-// Function: ASYNC function to render exercise
+// Function: ASYNC function to render exercises
 async function renderExercises() {
     let exerciseList= await fetchExerciseAPI();
     sortExercises(exerciseList);

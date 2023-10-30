@@ -1,5 +1,5 @@
 // let exerciseList = getSavedExercises();
-// addNewExercise(exerciseList);
+addNewExercise();
 renderExercises();
 
 

@@ -6,41 +6,26 @@
 }
 
 .banner-title {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    color: white;
-    font-size: 100px;
+    display: flex;
+    color: red;
+    font-size: 7vw;
     font-family: cursive;
 }
 
 .banner-subtitle {
-    position: absolute;
-    top: 63%;
-    left: 52%;
-    color: white;
-    font-size: 24px;
+    display: flex;
+    display: block;
+    color: red;
+    font-size: 2vw;
     font-family: 'Times New Roman', Times, serif
 }
 
-.pinned-section-title {
-    padding-top: 20px;
-    font-style: italic;
-    font-weight:normal;
-    color: gray;
-}
-
-.card-anchor {
-    color: black;
-    text-decoration: none;
-}
-
-.search-bar {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20%;
-    padding-right: 20%;
+.banner-title-container {
     display: flex;
+    display: block;
+    top: 15%;
+    left: 50%;
+    position: absolute;
 }
 
 

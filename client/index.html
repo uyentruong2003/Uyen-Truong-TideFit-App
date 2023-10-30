@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap css -->
     <link href="../client/index.css" rel="stylesheet"></link>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <link rel="icon" href="../client/resources/alabama_logo.png" type="image/x-icon"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" rel="stylesheet" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- icon and title of the website tab -->
+    <link href="../client/resources/alabama_logo.png" rel="icon" type="image/x-icon"></link>
     <title>TideFit</title>
 </head>
 <body>
@@ -46,8 +45,10 @@
     <!-- Banner -->
     <div>
       <img class="banner-bg" src="../client/resources/fitness_banner_bg.jpeg" alt="fitness themed banner"/>
-      <div class="banner-title">Welcome to TideFit!</div>
-      <div class="banner-subtitle">Where your dream body is made possible</div>
+      <div class="banner-title-container">
+        <div class="banner-title">Welcome to TideFit!</div>
+        <div class="banner-subtitle">Where your dream body is made possible</div>
+      </div>
     </div>
 
     <!-- Add new exercise form -->
@@ -93,35 +94,44 @@
             <label for="dateCompleted">Date Completed: </label>
           </div>
           <div class="col">
-            <div class="input-group date" id="dateCompleted">
-              <input type="text" class="form-control" required>
-              <span class="input-group-append">
-                <span class="input-group-text bg-white">
-                    <i class="fa fa-calendar"></i>
-                </span>
-              </span>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="dateCompleted" aria-label="dateCompleted" required>
             </div>
           </div>
-        </div>
-          <button class="btn btn-primary" id="addNewButton">Add Exercise</button>
+        </div>        
+        <button class="btn btn-primary" id="addNewButton">Add Exercise</button>
       </form>
     </div>
-   
-
     <!-- List of exercises -->
-    <div id="exercise-list-container" class="center-container"></div>
-
-    <script type="text/javascript">
-      $(function() {
-          $('#dateCompleted').datepicker();
-      });
-  </script>
+    <div id="exercise-list-container" class="center-container">
+      <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Activity Name</th>
+            <th scope="col">Activity Type</th>
+            <th scope="col">Distance</th>
+            <th scope="col">Date Completed</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+        </table>
+    </div>
 
     <!-- Script for js file -->
     <script src="../client/scripts/exercise-functions.js"></script>
+    <!-- Script for date input -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js" integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bootstrap link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!--Script for id generator-->
     <script src="../client/scripts/uuidv4.js"></script>
     <script src="../client/scripts/index.js"></script>
-
-
+    <script>
+      $(function(){
+        $('#dateCompleted').datepicker();
+      })
+    </script>
   </body>
 </html>

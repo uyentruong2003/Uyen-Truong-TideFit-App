@@ -18,7 +18,33 @@ const getSavedExercises = () => {
     }
 }
 
-//Function
+//Function: fetch all exercises from the API created:
+async function fetchExerciseAPI() {
+    try{
+        const response = await fetch('http://localhost:5165/api/Exercise');
+        if (!response.ok) {
+            throw new error("Network response is not ok");
+        }else {
+            const data = await response.json();
+            return data;
+        }
+    } catch (error){
+        console.log(error);
+    }
+}
+
+// TESTING: Wait for the exercises to be fetched and return a list of exercises:
+const printAllExercises = async () => {
+    try{
+        let exerciseList = await fetchExerciseAPI();
+        exerciseList.forEach(exercise => {
+            console.log(exercise.activityName); //testing
+        });
+        return exerciseList;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // Function: Remove an exercise:
 const removeExercise = (id, exerciseList) => {

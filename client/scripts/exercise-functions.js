@@ -33,18 +33,7 @@ async function fetchExerciseAPI() {
     }
 }
 
-// TESTING: Wait for the exercises to be fetched and return a list of exercises:
-const printAllExercises = async () => {
-    try{
-        let exerciseList = await fetchExerciseAPI();
-        exerciseList.forEach(exercise => {
-            console.log(exercise.activityName); //testing
-        });
-        return exerciseList;
-    } catch (error) {
-        console.log(error);
-    }
-}
+
 
 // Function: Remove an exercise:
 const removeExercise = (id, exerciseList) => {
@@ -138,7 +127,19 @@ function generateExerciseDOM(exercise, exerciseList) {
     handleDeleteButton(exercise.id, exerciseList);
 }
 
-function renderExercises(exerciseList) {
+// function renderExercises(exerciseList) {
+//     sortExercises(exerciseList);
+//     // clear DOM of the table:
+//     document.querySelector('#table-body').innerHTML="";
+//     // loop thru the list and add the rows into the table:
+//     exerciseList.forEach((exercise) => {
+//         generateExerciseDOM(exercise, exerciseList);
+//     });
+// }
+
+// Function: ASYNC function to render exercise
+async function renderExercises() {
+    let exerciseList= await fetchExerciseAPI();
     sortExercises(exerciseList);
     // clear DOM of the table:
     document.querySelector('#table-body').innerHTML="";

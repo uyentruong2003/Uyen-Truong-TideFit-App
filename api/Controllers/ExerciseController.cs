@@ -47,8 +47,10 @@ namespace api.Controllers
 
         // PUT: api/Exercise/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(string id, [FromBody] Exercise value)
         {
+            ExerciseUtility utility = new ExerciseUtility();
+            utility.UpdateExercise(value);
         }
 
         // DELETE: api/Exercise/5

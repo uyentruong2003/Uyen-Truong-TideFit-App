@@ -39,10 +39,10 @@ async function fetchExerciseAPI() {
 
 // Function: ASYNC PUT to update an exercise:
 async function updateExercise(exercise) {
-    await fetch ('http://localhost:5165/api/Exercise' + '/' + exercise.id, {
+    await fetch ('http://localhost:5165/api/Exercise' + `/${exercise.id}`, {
         method: "PUT",
         body: JSON.stringify(exercise),
-        header: {
+        headers: {
             "Content-type": "application/json; charset=UTF-8"
         }
     })
@@ -88,26 +88,26 @@ function addNewExercise() {
             pinned: false,
             deleted: false
         };
-        // POST the new exercise to the API:
-        saveExercise(exercise);
+        // POST the new exercise to the API THEN re-render the Exercises:
+        saveExercise(exercise).then (()=> {
+            renderExercises();
+        })
         // Reset form after submitting:
         document.getElementById("add-new-form").reset();
-        // Render exercise:
-        renderExercises();
     });
     
 }
 
 // Function: Handle delete button:
 function handleDeleteButton(exercise) {
-    let deleteButton=document.querySelector(`#deleteButton-${id}`);
+    let deleteButton=document.querySelector(`#deleteButton-${exercise.id}`);
     deleteButton.addEventListener('click',() => {
         // soft delete: update the deleted field to "true"
         exercise.deleted = true;
-        // update the change in the database:
-        updateExercise(exercise);
-        // re-render the exercises:
-        renderExercises();
+        // update the change in the database THEN re-render the Exercises:
+        updateExercise(exercise).then(()=> {
+            renderExercises();
+        })
     });
 }
 

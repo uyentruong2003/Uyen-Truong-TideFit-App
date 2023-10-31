@@ -122,7 +122,7 @@ function handlePinButton(exercise) {
     if (exercise.pinned) {
         // If it's already pinned, create an "Unpin" button
         pinButton.textContent = "Unpin";
-        pinButton.disabled = false; // Enable the button  
+
         pinButton.addEventListener('click', () => {
             // update pinned field to "false"
             exercise.pinned = false;
@@ -130,13 +130,10 @@ function handlePinButton(exercise) {
             updateExercise(exercise).then(() => {
                 renderExercises();
             });
-            // Disable the button after clicking to prevent multiple clicks
-            pinButton.disabled = true;
         });
     } else {
         // If it's not pinned, create a "Pin" button
         pinButton.textContent = "Pin";
-        pinButton.disabled = false; // Enable the button
         
         pinButton.addEventListener('click', () => {
             // update pinned field to "true"
@@ -145,8 +142,6 @@ function handlePinButton(exercise) {
             updateExercise(exercise).then(() => {
                 renderExercises();
             });
-            // Disable the button after clicking to prevent multiple clicks
-            pinButton.disabled = true;
         });
     }
 }

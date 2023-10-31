@@ -1,4 +1,11 @@
 using Microsoft.AspNetCore.Cors;
+using System.Data.SQLite;
+
+string cs = @"URI=file:C:\Users\uyenk\OneDrive - The University of Alabama\JS\Uyen-Truong-TideFit-App\api\Database.db";
+using var con = new SQLiteConnection (cs);
+con.Open();
+con.Close();
+
 
 var builder = WebApplication.CreateBuilder(args);
 

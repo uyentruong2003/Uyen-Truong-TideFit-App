@@ -37,10 +37,11 @@ async function fetchExerciseAPI() {
 //     }
 // }
 
-// Function: ASYNC DELETE exercise:
-async function deleteExercise(id) {
-    await fetch ('http://localhost:5165/api/Exercise' + '/' + id, {
-        method: "DELETE",
+// Function: ASYNC PUT to update an exercise:
+async function updateExercise(exercise) {
+    await fetch ('http://localhost:5165/api/Exercise' + '/' + exercise.id, {
+        method: "PUT",
+        body: JSON.stringify(exercise),
         header: {
             "Content-type": "application/json; charset=UTF-8"
         }
@@ -98,16 +99,20 @@ function addNewExercise() {
 }
 
 // Function: Handle delete button:
-function handleDeleteButton(id) {
+function handleDeleteButton(exercise) {
     let deleteButton=document.querySelector(`#deleteButton-${id}`);
     deleteButton.addEventListener('click',() => {
-        deleteExercise(id);
+        // soft delete: update the deleted field to "true"
+        exercise.deleted = true;
+        // update the change in the database:
+        updateExercise(exercise);
+        // re-render the exercises:
         renderExercises();
     });
 }
 
 // Function: Generate DOM for each new exercise:
-function generateExerciseDOM(exercise, exerciseList) {
+function generateExerciseDOM(exercise) {
     // row content HTML:
     const rowContent = `
     <td>${exercise.activityName}</td>
@@ -124,7 +129,7 @@ function generateExerciseDOM(exercise, exerciseList) {
     newRow.innerHTML= rowContent;
     // add the new row to the table:
     document.querySelector('#table-body').appendChild(newRow);
-    handleDeleteButton(exercise.id);
+    handleDeleteButton(exercise);
 }
 
 // Function: ASYNC function to render exercises
@@ -135,6 +140,8 @@ async function renderExercises() {
     document.querySelector('#table-body').innerHTML="";
     // loop thru the list and add the rows into the table:
     exerciseList.forEach((exercise) => {
-        generateExerciseDOM(exercise, exerciseList);
+        if (!exercise.deleted){
+            generateExerciseDOM(exercise);
+        }
     });
 }

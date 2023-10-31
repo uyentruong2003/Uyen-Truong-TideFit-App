@@ -40,7 +40,9 @@ namespace api.Controllers
         [HttpPost]
         public void Post([FromBody] Exercise value)
         {   
-            System.Console.WriteLine(value.activityName);
+            ExerciseUtility utility = new ExerciseUtility();
+            utility.SaveExercise(value);
+            // System.Console.WriteLine(value.activityName);
         }
 
         // PUT: api/Exercise/5

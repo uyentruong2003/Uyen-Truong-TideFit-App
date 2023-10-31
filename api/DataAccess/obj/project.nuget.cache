@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "3Fzjh3HLmXuQAsSdUBZg2SCUx+raVuKpXz2xSjP2GCrJgtvKK3pC0b51Wg56abu+7ft0g6rRr+CLNmTuVEzNPA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\uyenk\\OneDrive - The University of Alabama\\JS\\Uyen-Truong-TideFit-App\\api\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\uyenk\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\uyenk\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512"
+  ],
+  "logs": []
+}

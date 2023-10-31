@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2t3Flf8E842NbSggluLJxIa9LavrmemhMxh2Hf1qCladrL1zKtG3HS0gPaS71n4HVhXn6/brkYgny+a6SkGAmg==",
+  "dgSpecHash": "Q3WfI31R2xgkmT30Ws3i1RXyJhB4cLqt1kz6xATYSxGdehkRvAU1hk1sqiaVhwYFWvPRpQVCsaGwpjjRxVaPIg==",
   "success": true,
   "projectFilePath": "C:\\Users\\uyenk\\OneDrive - The University of Alabama\\JS\\Uyen-Truong-TideFit-App\\api\\api.csproj",
   "expectedPackageFiles": [
@@ -77,6 +77,7 @@
     "C:\\Users\\uyenk\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\uyenk\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
@@ -94,6 +95,7 @@
     "C:\\Users\\uyenk\\.nuget\\packages\\system.composition.runtime\\1.0.31\\system.composition.runtime.1.0.31.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\system.composition.typedparts\\1.0.31\\system.composition.typedparts.1.0.31.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
+    "C:\\Users\\uyenk\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
     "C:\\Users\\uyenk\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",

@@ -25,18 +25,6 @@ async function fetchExerciseAPI() {
     }
 }
 
-// // Function: Remove an exercise:
-// const removeExercise = (id, exerciseList) => {
-//     let exerciseIndex = exerciseList.findIndex((exercise) => exercise.id === id);
-//     if (exerciseIndex > -1) {
-//         exerciseList.splice(exerciseIndex,1);
-//         saveExercises(exerciseList);
-//         renderExercises(exerciseList);
-//     } else {
-//         console.log("Exercise ID is not found.");
-//     }
-// }
-
 // Function: ASYNC PUT to update an exercise:
 async function updateExercise(exercise) {
     await fetch ('http://localhost:5165/api/Exercise' + `/${exercise.id}`, {
@@ -48,8 +36,8 @@ async function updateExercise(exercise) {
     })
 }
 
-// Function: Selection Sort exercises:
-function sortExercises(exerciseList){
+// // Function: Selection Sort exercises (NO PINNED):
+function selectionSortExercises(exerciseList){
     for(let i=0; i < exerciseList.length-1; i++){
         let latestIndex = i;
         for(let j=i+1; j< exerciseList.length; j++){
@@ -66,6 +54,22 @@ function sortExercises(exerciseList){
     }
 };
 
+function sortExercises(exerciseList) {
+    // First, separate pinned and unpinned exercises
+    const pinnedExercises = exerciseList.filter(exercise => exercise.pinned);
+    const unpinnedExercises = exerciseList.filter(exercise => !exercise.pinned);
+
+    // Sort both pinned and unpinned exercises by dateCompleted (latest to earliest)
+    selectionSortExercises(pinnedExercises);
+    selectionSortExercises(unpinnedExercises);
+
+    // Concatenate the sorted pinned and unpinned exercises
+    const sortedExercises = [...pinnedExercises, ...unpinnedExercises];
+
+    // Update the original exerciseList with the sorted list
+    exerciseList.length = 0; // Clear the original array
+    exerciseList.push(...sortedExercises); // Push sorted exercises back to the original array
+}
 
 // Function: Add new exercise:
 function addNewExercise() {
@@ -111,6 +115,19 @@ function handleDeleteButton(exercise) {
     });
 }
 
+// Function: Handle pin button:
+function handlePinButton(exercise) {
+    let pinButton=document.querySelector(`#pinButton-${exercise.id}`);
+    pinButton.addEventListener('click',() => {
+        // update pinned field to "true"
+        exercise.pinned = true;
+        // update the change in the database THEN re-render the Exercises:
+        updateExercise(exercise).then(()=> {
+            renderExercises();
+        })
+    }); 
+}
+
 // Function: Generate DOM for each new exercise:
 function generateExerciseDOM(exercise) {
     // row content HTML:
@@ -130,6 +147,7 @@ function generateExerciseDOM(exercise) {
     // add the new row to the table:
     document.querySelector('#table-body').appendChild(newRow);
     handleDeleteButton(exercise);
+    handlePinButton(exercise);
 }
 
 // Function: ASYNC function to render exercises

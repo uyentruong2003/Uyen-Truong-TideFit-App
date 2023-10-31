@@ -115,42 +115,6 @@ function handleDeleteButton(exercise) {
     });
 }
 
-// // Function: Handle pin button:
-// function handlePinButton(exercise) {
-//     let pinButton=document.querySelector(`#pinButton-${exercise.id}`);
-//     pinButton.addEventListener('click',() => {
-//         // update pinned field to "true"
-//         exercise.pinned = true;
-//         // update the change in the database THEN re-render the Exercises:
-//         updateExercise(exercise).then(()=> {
-//             renderExercises();
-//         })
-//     }); 
-// }
-
-// function handlePinButton(exercise) {
-//     let pinButton = document.querySelector(`#pinButton-${exercise.id}`);
-    
-//     // Check if the exercise is already pinned
-//     if (exercise.pinned) {
-//         // If it's already pinned, disable the button
-//         pinButton.disabled = true;
-//     } else {
-//         // If it's not pinned, enable the button and add a click event listener
-//         pinButton.disabled = false;
-//         pinButton.addEventListener('click', () => {
-//             // update pinned field to "true"
-//             exercise.pinned = true;
-//             // update the change in the database THEN re-render the Exercises:
-//             updateExercise(exercise).then(() => {
-//                 renderExercises();
-//             });
-//             // Disable the button after clicking to prevent multiple clicks
-//             pinButton.disabled = true;
-//         });
-//     }
-// }
-
 function handlePinButton(exercise) {
     let pinButton = document.querySelector(`#pinButton-${exercise.id}`);
     

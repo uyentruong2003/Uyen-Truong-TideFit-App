@@ -39,7 +39,7 @@ namespace api.Controllers
         // POST: api/Exercise
         [HttpPost]
         public void Post([FromBody] Exercise value)
-        {
+        {   
             System.Console.WriteLine(value.activityName);
         }
 
@@ -51,8 +51,9 @@ namespace api.Controllers
 
         // DELETE: api/Exercise/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            System.Console.WriteLine(id);
         }
     }
 }

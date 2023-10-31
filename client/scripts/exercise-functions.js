@@ -25,16 +25,26 @@ async function fetchExerciseAPI() {
     }
 }
 
-// Function: Remove an exercise:
-const removeExercise = (id, exerciseList) => {
-    let exerciseIndex = exerciseList.findIndex((exercise) => exercise.id === id);
-    if (exerciseIndex > -1) {
-        exerciseList.splice(exerciseIndex,1);
-        saveExercises(exerciseList);
-        renderExercises(exerciseList);
-    } else {
-        console.log("Exercise ID is not found.");
-    }
+// // Function: Remove an exercise:
+// const removeExercise = (id, exerciseList) => {
+//     let exerciseIndex = exerciseList.findIndex((exercise) => exercise.id === id);
+//     if (exerciseIndex > -1) {
+//         exerciseList.splice(exerciseIndex,1);
+//         saveExercises(exerciseList);
+//         renderExercises(exerciseList);
+//     } else {
+//         console.log("Exercise ID is not found.");
+//     }
+// }
+
+// Function: ASYNC DELETE exercise:
+async function deleteExercise(id) {
+    await fetch ('http://localhost:5165/api/Exercise' + '/' + id, {
+        method: "DELETE",
+        header: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
 }
 
 // Function: Selection Sort exercises:
@@ -88,10 +98,11 @@ function addNewExercise() {
 }
 
 // Function: Handle delete button:
-function handleDeleteButton(id, exerciseList) {
+function handleDeleteButton(id) {
     let deleteButton=document.querySelector(`#deleteButton-${id}`);
     deleteButton.addEventListener('click',() => {
-        removeExercise(id, exerciseList);
+        deleteExercise(id);
+        renderExercises();
     });
 }
 
@@ -113,7 +124,7 @@ function generateExerciseDOM(exercise, exerciseList) {
     newRow.innerHTML= rowContent;
     // add the new row to the table:
     document.querySelector('#table-body').appendChild(newRow);
-    handleDeleteButton(exercise.id, exerciseList);
+    handleDeleteButton(exercise.id);
 }
 
 // Function: ASYNC function to render exercises
